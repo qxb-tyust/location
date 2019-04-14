@@ -10,7 +10,7 @@ import demo_runner as dr
 import numpy as np
 
 parser = argparse.ArgumentParser("Running benchmarks on simulator")
-parser.add_argument("--scene", type=str, default="test.glb")
+parser.add_argument("--scene", type=str, required=True)
 parser.add_argument(
     "--max_frames",
     type=int,
@@ -22,6 +22,7 @@ parser.add_argument("--seed", type=int, default=1)
 args = parser.parse_args()
 
 default_settings = dr.default_sim_settings.copy()
+default_settings["scene"] = args.scene
 default_settings["silent"] = True
 default_settings["seed"] = args.seed
 
